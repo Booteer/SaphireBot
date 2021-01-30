@@ -24,10 +24,10 @@ async def trans (ctx, lang,*, args):
         o = translator.translate(f'{args}', dest = f'{lang}')
     except Exception as e:
         # обработка исключения
-        em = discord.Embed(title = 'Язык не найден!')
+        em = discord.Embed(title = 'Язык не найден!', color = 0xff060e)
         em.add_field(name = 'Пример использования команды:', value = f'{prefix}trans <lang>, <текст>', inline = False)
     else:
-        em = discord.Embed(title = 'Переводчик.')
+        em = discord.Embed(title = 'Переводчик.', color = 0xf8dc81)
         em.add_field(name = 'Оригинал текста:', value = f'{args}', inline = False)
         em.add_field(name = f'Перевод ({lang}):', value = f'{o.text}', inline = False)
     await ctx.send(embed = em)
@@ -35,7 +35,7 @@ async def trans (ctx, lang,*, args):
 @trans.error
 async def trans(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        eb = discord.Embed(title = 'Ошибка!')
+        eb = discord.Embed(title = 'Ошибка!', color = 0xff060e)
         eb.add_field(name = f'Причина ошибки:', value = f'Не введён язык или текст! \n Пример использования: {prefix}trans <язык> <текст>')
         await ctx.send(embed = eb)
 #Получаем информацию о пользователе.
@@ -79,7 +79,7 @@ async def weather(ctx, *, args):
             z = x["weather"]
             weather_description = z[0]["description"]
             weather_description = z[0]["description"]
-            embed = discord.Embed(title=f"Weather in {city_name}", timestamp=ctx.message.created_at, )
+            embed = discord.Embed(title=f"Weather in {city_name}", timestamp=ctx.message.created_at, color = 0xeff7e1 )
             embed.add_field(name="Облачность", value=f"**{weather_description}**", inline=False)
             embed.add_field(name="Температура(C)", value=f"**{current_temperature_celsiuis}°C**", inline=False)
             embed.add_field(name="Влажность(%)", value=f"**{current_humidity}%**", inline=False)
@@ -116,7 +116,7 @@ async def server_inform(ctx):
 
     icon = str(ctx.guild.icon_url)
 
-    embed = discord.Embed(title='Информация о сервере')
+    embed = discord.Embed(title='Информация о сервере', color = 0xad6c80)
     embed.set_thumbnail(url=icon)
     embed.add_field(name = 'Название сервера:', value = f'{name}', inline=False)
     embed.add_field(name="Основатель сервера:", value=owner, inline=True)

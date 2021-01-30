@@ -21,7 +21,7 @@ async def clear(ctx, amount: int):
         await ctx.send(embed = b)
     if amount > 0 and amount <1000:
         await ctx.channel.purge(limit=amount)
-        a = discord.Embed(title='Очистка чата', color=0xFF1493)
+        a = discord.Embed(title='Очистка чата', color=0xd6b0b1)
         a.add_field(name='Чат очищен!', value=f'Было удалено {amount} сообщений администратором / модератором {ctx.author.name}')
         a.set_footer(text=f'Вызвано: {ctx.message.author}', icon_url=ctx.message.author.avatar_url)
         await ctx.send(embed=a, delete_after = 10 )
@@ -53,7 +53,7 @@ async def ban(ctx, member: discord.Member, *, args):
         await ctx.send('Вы не можете забанить того, кто выше вас ролью!')
         return
     else:
-        lol = discord.Embed(title='Пользователь забанен!', color=0x9400D3)
+        lol = discord.Embed(title='Пользователь забанен!', color=0x8b5e83)
         lol.add_field(name='Модератор / админ:', value=ctx.message.author.mention, inline=False)
         lol.add_field(name='Нарушитель:', value=member.mention, inline=False)
         lol.add_field(name='Причина:', value=f'{args}', inline=False)
@@ -75,7 +75,7 @@ async def ban_error(ctx, error):
         await ctx.send(embed=b)
 
 # разбан
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(ban_members=True)
 async def unban(ctx, *, member):
     if member == None or member == ctx.message.author:
@@ -106,7 +106,7 @@ async def clear_error(ctx, error):
         b.add_field(name='Причина ошибки:', value='У вас нету нужных прав для управления этой командой! - ```Банить участников```', inline=False)
         await ctx.send(embed=b)
 
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member, *, args):
     if member == ctx.message.author:
@@ -119,7 +119,7 @@ async def kick(ctx, member: discord.Member, *, args):
         await ctx.send('Вы не можете кикнуть того, кто выше вас ролью!')
         return
     else:
-        lol = discord.Embed(title='Пользователь кикнут!', color=0x9370DB)
+        lol = discord.Embed(title='Пользователь кикнут!', color=0x3b5360)
         lol.add_field(name='Модератор / админ:', value=ctx.message.author.mention, inline=False)
         lol.add_field(name='Нарушитель:', value=member.mention, inline=False)
         lol.add_field(name='Причина:', value= f'{args}', inline=False)
@@ -170,7 +170,7 @@ async def mute(ctx, member: discord.Member, time:int, *, args):
             bvb.add_field(name = 'Причина ошибки', value = 'Нельзя мьютить пользователя на 0 и меньше минут!', inline = False)
             await ctx.send(embed = bvb)
         if time >0:
-            lol = discord.Embed(title='Пользовтаель отправлен в мут', color=0x708090)
+            lol = discord.Embed(title='Пользовтаель отправлен в мут', color=0xf9f871)
             lol.add_field(name='Модератор / админ:', value=ctx.message.author.mention, inline=False)
             lol.add_field(name='Нарушитель:', value=member.mention, inline=False)
             lol.add_field(name='Причина:', value=f'{args}', inline=False)
@@ -207,7 +207,7 @@ async def unmute(ctx, member: discord.Member):
         await ctx.channel.send("Анмут самого себя?")
         return
     mute = discord.utils.get(ctx.message.guild.roles, name='mute')
-    lolxx = discord.Embed(title='Пользовтаель больше не в муте!', color=0xA52A2A)
+    lolxx = discord.Embed(title='Пользовтаель больше не в муте!', color=0xff5e78)
     lolxx.add_field(name='Модератор / админ:', value=ctx.message.author.mention, inline=False)
     lolxx.add_field(name='Нарушитель:', value=member.mention, inline=False)
     lolxx.set_footer(text=f'Вызвано: {ctx.message.author}', icon_url=ctx.message.author.avatar_url)
